@@ -3,6 +3,7 @@ import { employeeRouter } from 'routes/EmployeeRoutes';
 
 const app = express();
 
+app.use(express.json());
 app.use('/empleado', employeeRouter);
 
 const PORT = 7000;
