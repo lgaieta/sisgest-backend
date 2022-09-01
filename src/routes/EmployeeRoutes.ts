@@ -1,4 +1,5 @@
 import createEmployee from '@usecases/createEmployee';
+import deleteEmployee from '@usecases/deleteEmployee';
 import listEmployee from '@usecases/listEmployee';
 import express from 'express';
 import { ErrorWithCode } from 'utils/genErrorWithCode';
@@ -17,6 +18,12 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     createEmployee(req.body)
         .then(() => res.sendStatus(201))
+        .catch(() => res.sendStatus(400));
+});
+
+router.delete('/:id', (req, res) => {
+    deleteEmployee(+req.params.id)
+        .then(() => res.sendStatus(200))
         .catch(() => res.sendStatus(400));
 });
 
