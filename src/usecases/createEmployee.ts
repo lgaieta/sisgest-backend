@@ -1,5 +1,5 @@
 import Employee from '@entities/Employee.entity';
-import saveEmployee from '@services/saveEmployee';
+import saveEmployee from '@services/saveEmployee.service';
 
 type CreateEmployee = (data: Omit<Employee, 'id'>) => Promise<void>;
 
