@@ -35,8 +35,9 @@
             "node_modules"
         ],
         "watch": [
-            "src"
+            "src/"
         ],
-        "exec": "ts-node -r tsconfig-paths/register src/index.ts"
+        "exec": "ts-node -r tsconfig-paths/register src/index.ts",
+        "ext": "ts"
     }
 }
