@@ -4,3 +4,5 @@ type Employee = {
     surnames: string;
     client_id: number;
 };
+
+export default Employee;
