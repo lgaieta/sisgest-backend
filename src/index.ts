@@ -1,15 +1,9 @@
 import express from 'express';
-import { dbPool } from './db/dbPool';
+import { employeeRouter } from 'routes/EmployeRoutes';
 
 const app = express();
 
-app.get('/', (_req, res) => {
-    dbPool.query('select * from cliente;', (error, rows) => {
-        if (error) console.log(error);
-        else console.log(rows);
-    });
-    res.send('Nice');
-});
+app.use('/empleado', employeeRouter);
 
 const PORT = 7000;
 app.listen(PORT, () => {
