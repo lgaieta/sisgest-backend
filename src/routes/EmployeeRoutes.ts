@@ -1,6 +1,7 @@
 import createEmployee from '@usecases/createEmployee';
 import deleteEmployee from '@usecases/deleteEmployee';
 import listEmployee from '@usecases/listEmployee';
+import updateEmployee from '@usecases/updateEmployee';
 import express from 'express';
 import { ErrorWithCode } from 'utils/genErrorWithCode';
 
@@ -23,6 +24,12 @@ router.post('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     deleteEmployee(+req.params.id)
+        .then(() => res.sendStatus(200))
+        .catch(() => res.sendStatus(400));
+});
+
+router.put('/', (req, res) => {
+    updateEmployee(req.body)
         .then(() => res.sendStatus(200))
         .catch(() => res.sendStatus(400));
 });
