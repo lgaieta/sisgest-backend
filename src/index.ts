@@ -1,10 +1,13 @@
 import express from 'express';
-import { employeeRouter } from 'routes/EmployeeRoutes';
+import { employeeRouter } from '@routes/EmployeeRoutes';
+import swaggerUi from 'swagger-ui-express';
+import swaggerSetup from '@docs/swagger';
 
 const app = express();
 
 app.use(express.json());
 app.use('/empleado', employeeRouter);
+app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerSetup));
 
 const PORT = 7000;
 app.listen(PORT, () => {
