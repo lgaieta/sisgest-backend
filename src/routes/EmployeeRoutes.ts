@@ -1,12 +1,30 @@
 import createEmployee from '@usecases/createEmployee';
 import deleteEmployee from '@usecases/deleteEmployee';
 import listEmployee from '@usecases/listEmployee';
+import listEmployees from '@usecases/listEmployees';
 import updateEmployee from '@usecases/updateEmployee';
 import express from 'express';
 import { ErrorWithCode } from 'utils/genErrorWithCode';
 
 const router = express.Router();
 
+router.get('/', (req, res) => {
+    listEmployees()
+        .then(data => res.json(data))
+        .catch(e => {
+            if (e instanceof ErrorWithCode) res.status(e.code).send(e.message);
+            else res.sendStatus(400);
+        });
+});
+
+/**
+ * Gets employee by id
+ * @swagger
+ * /employee/{id}:
+ *  get:
+ *      tags:
+ *          -  Employee
+ */
 router.get('/:id', (req, res) => {
     listEmployee(+req.params.id)
         .then(data => res.json(data))
