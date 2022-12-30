@@ -11,7 +11,7 @@ const updateEmployeeService = async (data: Partial<Employee>) => {
         ${data.client_id ? ',id_cliente = ?' : ''}`;
 
         await dbPromisedPool.query<ResultSetHeader>(
-            `update empleado set ${fields} where id_empleado = `,
+            `update empleado set ${fields} where id_empleado = ?`,
             queryValues.filter(value => value !== undefined)
         );
     } catch (e) {
